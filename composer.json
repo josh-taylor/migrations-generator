@@ -10,14 +10,21 @@
     ],
     "require": {
         "illuminate/support": "^5.2",
-        "illuminate/console": "^5.2"
+        "illuminate/console": "^5.2",
+        "laracasts/generators": "^1.1"
     },
     "autoload": {
         "psr-4": {
             "Josh\\MigrationsGenerator\\": "src/"
         }
     },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    },
     "require-dev": {
-        "phpunit/phpunit": "^5.2"
+        "phpunit/phpunit": "^5.2",
+        "illuminate/database": "^5.2"
     }
 }
