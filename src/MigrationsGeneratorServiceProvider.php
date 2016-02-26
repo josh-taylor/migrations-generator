@@ -1,5 +1,7 @@
 <?php
 
+namespace Josh\MigrationsGenerator;
+
 use Illuminate\Support\ServiceProvider;
 
 class MigrationsGeneratorServiceProvider extends ServiceProvider
