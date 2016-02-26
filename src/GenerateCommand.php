@@ -27,7 +27,7 @@ class GenerateCommand extends Command
     public function handle()
     {
         $this->call('make:migration:schema', [
-            'create_posts_table',
+            'name' => 'create_posts_table',
             '--schema' => 'title:string, body:text'
         ]);
     }
