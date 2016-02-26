@@ -2,7 +2,7 @@
 
 namespace Josh\MigrationsGenerator;
 
-use Illuinate\Console\Command;
+use Illuminate\Console\Command;
 
 class GenerateCommand extends Command
 {
