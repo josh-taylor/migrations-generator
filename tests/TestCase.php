@@ -4,6 +4,8 @@ use Illuminate\Database\Capsule\Manager as DB;
 
 abstract class TestCase extends PHPUnit_Framework_TestCase
 {
+    protected $database;
+
     public function setUp()
     {
         $this->setUpDatabase();
@@ -12,11 +14,11 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 
     protected function setUpDatabase()
     {
-        $database = new DB;
+        $this->database = new DB;
 
-        $database->addConnection(['driver' => 'sqlite', 'database' => ':memory:']);
-        $database->bootEloquent();
-        $database->setAsGlobal();
+        $this->database->addConnection(['driver' => 'sqlite', 'database' => ':memory:']);
+        $this->database->bootEloquent();
+        $this->database->setAsGlobal();
     }
 
     protected function migrateTables()
