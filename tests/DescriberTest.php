@@ -16,5 +16,11 @@ class DescriberTest extends TestCase
 
         $this->assertEquals('title', $description[1]['name']);
         $this->assertEquals('string', $description[1]['type']);
+
+        $this->assertEquals('created_at', $description[2]['name']);
+        $this->assertEquals('datetime', $description[2]['type']);
+
+        $this->assertEquals('updated_at', $description[3]['name']);
+        $this->assertEquals('datetime', $description[3]['type']);
     }
 }

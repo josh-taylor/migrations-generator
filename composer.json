@@ -11,7 +11,8 @@
     "require": {
         "illuminate/support": "^5.2",
         "illuminate/console": "^5.2",
-        "laracasts/generators": "^1.1"
+        "laracasts/generators": "^1.1",
+        "doctrine/dbal": "^2.5"
     },
     "autoload": {
         "psr-4": {
