@@ -2,7 +2,9 @@
 
 namespace Josh\MigrationsGenerator;
 
+use DB;
 use Illuminate\Console\Command;
+use Josh\MigrationsGenerator\Describer;
 
 class GenerateCommand extends Command
 {
@@ -26,10 +28,27 @@ class GenerateCommand extends Command
      */
     public function handle()
     {
-        $this->call('make:migration:schema', [
-            'name' => 'create_posts_table',
-            '--schema' => 'title:string, body:text'
-        ]);
+        $schema = DB::connection()
+            ->getDoctrineConnection()
+            ->getSchemaManager();
+
+        $tables = $schema->listTableNames();
+
+        $describer = new Describer;
+
+        foreach ($tables as $table) {
+            $columns = $describer->describe($table);
+
+            $types = array_map(function ($column) {
+                return $column['name'] . ':' . $column['type'];
+            });
+
+            $this->call('make:migration:schema', [
+                'name' => 'create_' . $table . '_table',
+                '--schema' => implode($types, ', '),
+                '--model' => false
+            ]);
+        }
     }
 }
 
