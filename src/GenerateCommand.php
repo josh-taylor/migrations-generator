@@ -4,7 +4,6 @@ namespace Josh\MigrationsGenerator;
 
 use DB;
 use Illuminate\Console\Command;
-use Josh\MigrationsGenerator\Describer;
 
 class GenerateCommand extends Command
 {
@@ -41,7 +40,7 @@ class GenerateCommand extends Command
 
             $types = array_map(function ($column) {
                 return $column['name'] . ':' . $column['type'];
-            });
+            }, $columns);
 
             $this->call('make:migration:schema', [
                 'name' => 'create_' . $table . '_table',

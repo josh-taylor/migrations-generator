@@ -27,6 +27,7 @@ class Describer
      * Describe all columns in a single table
      *
      * @param string $table
+     * @return array
      */
     public function describe($table)
     {
@@ -41,6 +42,7 @@ class Describer
      * Convert the DBAL schema to an assoc array.
      *
      * @param array $columns
+     * @return array
      */
     protected function parseSchema(array $columns)
     {
