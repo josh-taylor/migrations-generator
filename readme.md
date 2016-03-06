@@ -1,4 +1,4 @@
-# Migrations Generator
+# Migrations Generator [![Build Status](https://travis-ci.org/josh-taylor/migrations-generator.svg?branch=master)](https://travis-ci.org/josh-taylor/migrations-generator)
 
 Generate migrations from an existing database. Ideal for use when migrating an app to Laravel.
 
