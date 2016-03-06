@@ -11,7 +11,7 @@ Please note, this is still really a work in progress. Worth noting the [things l
 From the command line run:
 
 ```
-composer require josh-taylor/migrations-generator
+composer require josh-taylor/migrations-generator --dev
 ```
 
 ### Step 2: Service Provider
