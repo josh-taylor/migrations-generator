@@ -35,6 +35,8 @@ class GenerateCommand extends Command
     public function __construct(DB $db)
     {
         $this->db = $db;
+
+        parent::__construct();
     }
 
     /**
