@@ -25,7 +25,8 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
     {
         DB::schema()->create('posts', function ($table) {
             $table->increments('id');
-            $table->string('title');
+            $table->string('title', 100);
+            $table->text('body');
             $table->timestamps();
         });
 

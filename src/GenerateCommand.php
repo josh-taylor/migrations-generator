@@ -49,13 +49,9 @@ class GenerateCommand extends Command
         );
 
         foreach ($generator->tables() as $schema) {
-            $types = array_map(function ($column) {
-                return $column['name'] . ':' . $column['type'];
-            }, $schema['columns']);
-
             $this->call('make:migration:schema', [
                 'name' => 'create_' . $schema['table'] . '_table',
-                '--schema' => implode($types, ', '),
+                '--schema' => (new SchemaArgumentBuilder)->create($schema['columns']),
                 '--model' => false
             ]);
         }

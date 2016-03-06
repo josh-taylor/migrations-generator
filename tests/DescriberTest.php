@@ -11,16 +11,30 @@ class DescriberTest extends TestCase
 
         $description = $describer->describe('posts');
 
-        $this->assertEquals('id', $description[0]['name']);
-        $this->assertEquals('integer', $description[0]['type']);
+        $this->assertDbSchema(
+            'id', 'integer', $description[0]
+        );
 
-        $this->assertEquals('title', $description[1]['name']);
-        $this->assertEquals('string', $description[1]['type']);
+        $this->assertDbSchema(
+            'title', 'string', $description[1]
+        );
 
-        $this->assertEquals('created_at', $description[2]['name']);
-        $this->assertEquals('datetime', $description[2]['type']);
+        $this->assertDbSchema(
+            'body', 'text', $description[2]
+        );
 
-        $this->assertEquals('updated_at', $description[3]['name']);
-        $this->assertEquals('datetime', $description[3]['type']);
+        $this->assertDbSchema(
+            'created_at', 'datetime', $description[3]
+        );
+
+        $this->assertDbSchema(
+            'updated_at', 'datetime', $description[4]
+        );
+    }
+
+    protected function assertDbSchema($name, $type, $row)
+    {
+        $this->assertEquals($name, $row['name'], 'Name field does not match');
+        $this->assertEquals($type, $row['type'], 'Type field for ' . $row['name'] . ' does not match');
     }
 }

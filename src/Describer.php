@@ -35,7 +35,9 @@ class Describer
             ->getDoctrineConnection()
             ->getSchemaManager();
 
-        return $this->parseSchema($schema->listTableColumns($table));
+        return $this->parseSchema(
+            $schema->listTableColumns($table)
+        );
     }
 
     /**
@@ -50,7 +52,7 @@ class Describer
 
         foreach ($columns as $name => $column) {
             $schema[] = [
-                'name' => $name,
+                'name' => $column->getName(),
                 'type' => $column->getType()->getName()
             ];
         }
