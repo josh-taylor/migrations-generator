@@ -1,6 +1,6 @@
 <?php
 
-namespace Josh\MigrationsGenerator;
+namespace JoshTaylor\MigrationsGenerator;
 
 use Illuminate\Console\Command;
 use Illuminate\Database\DatabaseManager as DB;

@@ -1,6 +1,6 @@
 <?php
 
-use Josh\MigrationsGenerator\SchemaArgumentBuilder;
+use JoshTaylor\MigrationsGenerator\SchemaArgumentBuilder;
 
 class SchemaArgumentBuilderTest extends TestCase
 {

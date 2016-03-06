@@ -1,6 +1,6 @@
 <?php
 
-namespace Josh\MigrationsGenerator;
+namespace JoshTaylor\MigrationsGenerator;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -18,7 +18,7 @@ class MigrationsGeneratorServiceProvider extends ServiceProvider
 
         // Register our commands
         $this->app->singleton('command.josh.generate', function ($app) {
-            return $app['Josh\MigrationsGenerator\GenerateCommand'];
+            return $app['JoshTaylor\MigrationsGenerator\GenerateCommand'];
         });
 
         $this->commands('command.josh.generate');

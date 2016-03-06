@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Josh\\MigrationsGenerator\\": "src/"
+            "JoshTaylor\\MigrationsGenerator\\": "src/"
         }
     },
     "autoload-dev": {

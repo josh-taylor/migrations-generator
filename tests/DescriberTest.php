@@ -1,6 +1,6 @@
 <?php
 
-use Josh\MigrationsGenerator\Describer;
+use JoshTaylor\MigrationsGenerator\Describer;
 
 class DescriberTest extends TestCase
 {

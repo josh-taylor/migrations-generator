@@ -1,13 +1,13 @@
 <?php
 
-use Josh\MigrationsGenerator\Generator;
+use JoshTaylor\MigrationsGenerator\Generator;
 
 class GeneratorTest extends TestCase
 {
     /** @test */
     public function it_should_return_all_descriptions_for_each_table()
     {
-        $describer = $this->prophesize('Josh\MigrationsGenerator\Describer');
+        $describer = $this->prophesize('JoshTaylor\MigrationsGenerator\Describer');
 
         $postsSchema = [['name' => 'id', 'type' => 'integer']];
         $usersSchema = [['name' => 'id', 'type' => 'integer']];
