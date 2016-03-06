@@ -49,12 +49,14 @@ class GenerateCommand extends Command
         );
 
         foreach ($generator->tables() as $schema) {
-            $this->call('make:migration:schema', [
+            $this->callSilent('make:migration:schema', [
                 'name' => 'create_' . $schema['table'] . '_table',
                 '--schema' => (new SchemaArgumentBuilder)->create($schema['columns']),
                 '--model' => false
             ]);
         }
+
+        $this->info('Migrations created successfully');
     }
 }
 
