@@ -2,8 +2,8 @@
 
 namespace Josh\MigrationsGenerator;
 
-use DB;
 use Illuminate\Console\Command;
+use Illuminate\Database\DatabaseManager as DB;
 
 class GenerateCommand extends Command
 {
@@ -23,27 +23,36 @@ class GenerateCommand extends Command
     protected $description = 'Generate migrations from your database schema';
 
     /**
+     * @var DB
+     */
+    protected $db;
+
+    /**
+     * GenerateCommand constructor.
+     *
+     * @param DB $db
+     */
+    public function __construct(DB $db)
+    {
+        $this->db = $db;
+    }
+
+    /**
      * Execute the console command
      */
     public function handle()
     {
-        $schema = DB::connection()
-            ->getDoctrineConnection()
-            ->getSchemaManager();
+        $generator = new Generator(
+            new Describer($this->db), $this->db
+        );
 
-        $tables = $schema->listTableNames();
-
-        $describer = new Describer;
-
-        foreach ($tables as $table) {
-            $columns = $describer->describe($table);
-
+        foreach ($generator->tables() as $schema) {
             $types = array_map(function ($column) {
                 return $column['name'] . ':' . $column['type'];
-            }, $columns);
+            }, $schema['columns']);
 
             $this->call('make:migration:schema', [
-                'name' => 'create_' . $table . '_table',
+                'name' => 'create_' . $schema['table'] . '_table',
                 '--schema' => implode($types, ', '),
                 '--model' => false
             ]);

@@ -28,5 +28,13 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
             $table->string('title');
             $table->timestamps();
         });
+
+        DB::schema()->create('users', function ($table) {
+            $table->increments('id');
+            $table->integer('group_id');
+            $table->string('username');
+            $table->string('password');
+            $table->timestamps();
+        });
     }
 }
