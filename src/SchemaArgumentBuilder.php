@@ -4,6 +4,12 @@ namespace Josh\MigrationsGenerator;
 
 class SchemaArgumentBuilder
 {
+    /**
+     * Return the argument string to use for the migration command.
+     *
+     * @param $schema
+     * @return string
+     */
     public function create($schema)
     {
         $types = array_map(function ($column) {
