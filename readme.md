@@ -18,7 +18,7 @@ composer require josh-taylor/migrations-generator --dev
 
 For your Laravel app, you will only want these commands available during development, open `app/Providers\AppServiceProvider.php` and add in to the `register()` method:
 
-```
+```php
 if ($this->app->environment() == 'local') {
   $this->app->register('JoshTaylor\MigrationsGenerator\MigrationsGeneratorServiceProvider');
 }
